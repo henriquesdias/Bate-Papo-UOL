@@ -1,4 +1,5 @@
 const containerMessage = document.querySelector('main');
+const message = document.querySelector('.message');
 let localUser;
 nameOfUser();
 function nameOfUser() {
@@ -19,13 +20,13 @@ function showMessages(){
     promise.then((answer) => {
     for (let i = 0 ; i < answer.data.length ; i++) {
         if (answer.data[i].type === 'status') {
-            containerMessage.innerHTML += `<div class="backgroundColorStatus">
+            containerMessage.innerHTML += `<div class="backgroundColorStatus message">
             <p class="time">(${answer.data[i].time})</p>
             <p class="user">${answer.data[i].from} para ${answer.data[i].to}:</p>
             <p class="message">${answer.data[i].text}</p>
             </div>`
         }  if (answer.data[i].type === 'message') {
-            containerMessage.innerHTML += `<div class="backgroundColorNormalMessage">
+            containerMessage.innerHTML += `<div class="backgroundColorNormalMessage message">
             <p class="time">(${answer.data[i].time})</p>
             <p class="user">${answer.data[i].from} para ${answer.data[i].to} :</p>
             <p class="message">${answer.data[i].text}</p>
@@ -44,10 +45,11 @@ function sendMessage() {
         type: 'message'
     })
     input.value = '';
-    promise.then( ()=> {
+    promise.then( (answer)=> {
+        console.log(`Deu certo o envio de mensagem ${answer}`);
         containerMessage.innerHTML = '';
         showMessages();
-        containerMessage.scrollIntoView();
+        message.scrollIntoView();
     });
     promise.catch((erro) => {
     console.log(erro); 
