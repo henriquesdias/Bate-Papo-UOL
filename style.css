@@ -55,7 +55,7 @@ main div{
 }
 .user{
     margin: 0 5px;
-    min-width: 70px;
+    min-width: 100px;
     font-weight: bold;
     display: flex;
     justify-content: flex-start;
@@ -89,6 +89,48 @@ footer input{
 footer input::placeholder{
     color: black;
     font-style: italic;
+}
+.screen-user{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.screen-user img{
+    width: 130px;
+    height: 92px;
+}
+.nameUser{
+    outline: none;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    text-align: center;
+    width: 261px;
+    height: 54px;
+    font-size: 18px;
+    margin-top: 94px;
+    margin-bottom: 15px;
+}
+.button{
+    background-color: #E7E7E7;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    width: 109px;
+    height: 45px;
+    color: #696969;
+}
+.hide{
+    display: none;
 }
 .backgroundColorStatus {
     background-color: #DCDCDC;

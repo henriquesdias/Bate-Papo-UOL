@@ -1,12 +1,14 @@
 const containerMessage = document.querySelector('main');
-containerMessage.scrollTop = containerMessage.scrollHeight;
+const screen = document.querySelector('.screen-user');
 let localUser;
-nameOfUser();
+// nameOfUser();
 function nameOfUser() {
-     localUser = prompt('Qual o seu nome ?');
-     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants ' , {name: localUser});
-     promise.then(showMessages);
-     promise.catch(errorUser);
+    const input = document.querySelector('.nameUser');
+    localUser = input.value;
+    // localUser = prompt('Qual o seu nome ?');
+    const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants ' , {name: localUser});
+    promise.then(showMessages);
+    promise.catch(errorUser);
 }
  
 function errorUser(){
@@ -15,6 +17,7 @@ function errorUser(){
 }
 
 function showMessages(){
+    screen.classList.add('hide');
     containerMessage.innerHTML = '';
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     promise.then((answer) => {
