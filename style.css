@@ -96,7 +96,7 @@ footer input::placeholder{
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -128,6 +128,10 @@ footer input::placeholder{
     width: 109px;
     height: 45px;
     color: #696969;
+}
+.warning{
+    color: red;
+    margin-top: 10px;
 }
 .hide{
     display: none;

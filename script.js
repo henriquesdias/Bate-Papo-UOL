@@ -1,18 +1,19 @@
 const containerMessage = document.querySelector('main');
 const screen = document.querySelector('.screen-user');
 let localUser;
-// nameOfUser();
+
 function nameOfUser() {
     const input = document.querySelector('.nameUser');
     localUser = input.value;
-    // localUser = prompt('Qual o seu nome ?');
+    input.value = '';
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants ' , {name: localUser});
     promise.then(showMessages);
     promise.catch(errorUser);
 }
  
 function errorUser(){
-    alert('Digite um nome válido');
+    const warning = document.querySelector('.warning');
+    warning.classList.toggle('hide');
     nameOfUser();
 }
 
@@ -37,14 +38,16 @@ function showMessages(){
         } if (answer.data[i].type === 'private_message' && answer.data[i].to == localUser) {
             containerMessage.innerHTML += `<div class="backgroundColorPrivateMessage">
             <p class="time">(${answer.data[i].time})</p>
-            <p class="user">${answer.data[i].from} para ${answer.data[i].to} :</p>
+            <p class="user">${answer.data[i].from} para ${localUser} :</p>
             <p class="message">${answer.data[i].text}</p>
             </div>`
         }
       }
+      const lastElement = document.querySelector('main div:last-child');
+      lastElement.scrollIntoView(false);
     })
-    // setInterval(showMessages , 3000);
-    // setInterval(verifyStatusOfUser , 5000);
+    setInterval(showMessages , 3000);
+    setInterval(verifyStatusOfUser , 5000);
 }
 function sendMessage() {
     const input = document.querySelector('.input-send');
