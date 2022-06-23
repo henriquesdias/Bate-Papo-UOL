@@ -32,8 +32,8 @@ header .icon{
     cursor: pointer;
 }
 main {
-    margin-top: 102px;
-    margin-bottom: 90px;
+    /* margin-top: 102px; */
+    margin: auto 0;
     width: 100%;
 }
 main div{
