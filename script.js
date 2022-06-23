@@ -3,6 +3,11 @@ const screen = document.querySelector('.screen-user');
 let localUser;
 
 function nameOfUser() {
+    const button = document.querySelector('.button');
+    const warning = document.querySelector('.warning');
+    warning.innerHTML = '';
+    button.classList.add('loading');
+    button.innerHTML = 'Entrando ...';
     const input = document.querySelector('.nameUser');
     localUser = input.value;
     input.value = '';
@@ -10,11 +15,17 @@ function nameOfUser() {
     promise.then(showMessages);
     promise.catch(errorUser);
 }
+
  
-function errorUser(){
+function errorUser(error){
     const warning = document.querySelector('.warning');
-    warning.classList.toggle('hide');
-    nameOfUser();
+    const button = document.querySelector('.button');
+    button.innerHTML = 'Entrar';
+    button.classList.remove('loading');
+    if (error.response.status === 400) {
+        warning.innerHTML = 'Nome de usuário já em uso </br> Digite outro nome';
+    }
+    warning.classList.remove('hide');
 }
 
 function showMessages(){
@@ -46,7 +57,7 @@ function showMessages(){
       const lastElement = document.querySelector('main div:last-child');
       lastElement.scrollIntoView(false);
     })
-    setInterval(showMessages , 3000);
+    // setInterval(showMessages , 3000);
     setInterval(verifyStatusOfUser , 5000);
 }
 function sendMessage() {
@@ -59,7 +70,8 @@ function sendMessage() {
         type: 'message'
     })
     input.value = '';
-    promise.then( (answer)=> {
+    promise.then( (answer) => {
+        console.log(answer);
         containerMessage.innerHTML = '';
         showMessages();
     });
@@ -69,7 +81,7 @@ function sendMessage() {
 }
 function verifyStatusOfUser(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/status' , {name: localUser});
-    console.log('estou verificando sua presença');
+    promise.then( (answer) => console.log(answer) );
 }
 
 

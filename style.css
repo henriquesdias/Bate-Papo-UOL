@@ -129,9 +129,14 @@ footer input::placeholder{
     height: 45px;
     color: #696969;
 }
+.loading{
+    background-color: white;
+    color: black;
+}
 .warning{
     color: red;
     margin-top: 10px;
+    text-align: center;
 }
 .hide{
     display: none;
