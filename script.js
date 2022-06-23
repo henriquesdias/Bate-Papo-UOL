@@ -31,11 +31,17 @@ function showMessages(){
             <p class="user">${answer.data[i].from} para ${answer.data[i].to} :</p>
             <p class="message">${answer.data[i].text}</p>
             </div>`
-        } 
+        } if (answer.data[i].type === 'private_message' && answer.data[i].to == localUser) {
+            containerMessage.innerHTML += `<div class="backgroundColorPrivateMessage">
+            <p class="time">(${answer.data[i].time})</p>
+            <p class="user">${answer.data[i].from} para ${answer.data[i].to} :</p>
+            <p class="message">${answer.data[i].text}</p>
+            </div>`
+        }
       }
     })
     // setInterval(showMessages , 3000);
-    setInterval(verifyStatusOfUser , 5000);
+    // setInterval(verifyStatusOfUser , 5000);
 }
 function sendMessage() {
     const input = document.querySelector('.input-send');
