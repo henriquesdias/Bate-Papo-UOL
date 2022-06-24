@@ -33,7 +33,7 @@ function showMessages(){
     containerMessage.innerHTML = '';
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     promise.then((answer) => {
-    for (let i = 0 ; i < answer.data.length ; i++) {
+    for (let i = answer.data.length - 1 ; i >= 60 ; i--) {
         if (answer.data[i].type === 'status') {
             containerMessage.innerHTML += `<div class="backgroundColorStatus">
             <p class="time">(${answer.data[i].time})</p>
@@ -54,7 +54,7 @@ function showMessages(){
             </div>`
         }
       }
-      const lastElement = document.querySelector('main div:last-child');
+      const lastElement = document.querySelector('main div:first-child');
       lastElement.scrollIntoView(false);
     })
     // setInterval(showMessages , 3000);
@@ -81,7 +81,10 @@ function sendMessage() {
 }
 function verifyStatusOfUser(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/status' , {name: localUser});
-    promise.then( (answer) => console.log(answer) );
+}
+function toggleSideBar(){
+    const navBar = document.querySelector('nav');
+    navBar.classList.toggle('hide');
 }
 
 
