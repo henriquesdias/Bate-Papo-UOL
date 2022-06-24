@@ -86,6 +86,22 @@ function toggleSideBar(){
     const navBar = document.querySelector('nav');
     navBar.classList.toggle('hide');
 }
+function updateUsers(){
+    const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
+    promise.then(showUsersSideBar);
+}
+function showUsersSideBar(answer){
+    const users = document.querySelector('.usersUpdate');
+    console.log(users);
+    for (let i = 0 ; i < answer.data.length ; i++) {
+        users.innerHTML += 
+    `<div>
+        <ion-icon name="person-circle" class="icon"></ion-icon>
+        ${answer.data[i].name}
+        <ion-icon name="checkmark-sharp" class="check hide"></ion-icon>
+    </div>`
+    }
+}
 
 
 

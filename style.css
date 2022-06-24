@@ -89,6 +89,14 @@ nav{
 .users{
     margin-top: 30px;
     margin-left: 17px;
+    height: 100px;
+    overflow-y: scroll;
+    width: 100%;
+}
+.usersUpdate{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .side-bar h1{
     text-align: center;
@@ -97,7 +105,6 @@ nav{
 }
 .users div{
     display: flex;
-    align-items: center;
     margin-bottom: 7px;
 }
 .check{
