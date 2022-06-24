@@ -6,7 +6,6 @@ body{
     align-items: center;
     flex-direction: column;
     background-color: #F3F3F3;
-    height: 500vh;
     overflow-y: hidden;
 }
 *{
@@ -34,7 +33,7 @@ header .icon{
 }
 main {
     margin-top: 102px;
-    margin-bottom: 102px;
+    padding-bottom: 10px;
     height: 70vh;
     width: 100%;
     overflow-y: scroll;
@@ -42,26 +41,19 @@ main {
     flex-direction: column-reverse;
 }
 main div{
-    display: flex;
-    padding-left: 17px;
-    align-items: center;
-    min-height: 40px;
+    word-break: break-word;
+    display: inline-block;
+    padding: 10px 3px 10px 8px;
+    line-height: 20px;
     margin: 4px 0;
+    font-size: 14px;
+}
+.user{
+    margin-right: 5px;
 }
 .time{
     color: #AAAAAA;
-    width: 80px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.user{
-    margin: 0 5px;
-    min-width: 100px;
-    font-weight: bold;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    margin-right: 7px;
 }
 nav{
     position: fixed;

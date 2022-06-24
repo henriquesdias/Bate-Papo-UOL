@@ -36,22 +36,22 @@ function showMessages(){
     for (let i = answer.data.length - 1 ; i >= 60 ; i--) {
         if (answer.data[i].type === 'status') {
             containerMessage.innerHTML += `<div class="backgroundColorStatus">
-            <p class="time">(${answer.data[i].time})</p>
-            <p class="user">${answer.data[i].from} para ${answer.data[i].to}:</p>
-            <p class="message">${answer.data[i].text}</p>
-            </div>`
+            <span class="time">(${answer.data[i].time})</span>
+            <span class="user"><strong>${answer.data[i].from}</strong> para <strong>${answer.data[i].to}:</strong></span>
+            <span class="message">${answer.data[i].text}</span>
+        </div>`
         }  if (answer.data[i].type === 'message') {
             containerMessage.innerHTML += `<div class="backgroundColorNormalMessage">
-            <p class="time">(${answer.data[i].time})</p>
-            <p class="user">${answer.data[i].from} para ${answer.data[i].to} :</p>
-            <p class="message">${answer.data[i].text}</p>
-            </div>`
+            <span class="time">(${answer.data[i].time})</span>
+            <span class="user"><strong>${answer.data[i].from}</strong> para <strong>${answer.data[i].to}:</strong></span>
+            <span class="message">${answer.data[i].text}</span>
+        </div>`
         } if (answer.data[i].type === 'private_message' && answer.data[i].to == localUser) {
             containerMessage.innerHTML += `<div class="backgroundColorPrivateMessage">
-            <p class="time">(${answer.data[i].time})</p>
-            <p class="user">${answer.data[i].from} para ${localUser} :</p>
-            <p class="message">${answer.data[i].text}</p>
-            </div>`
+            <span class="time">(${answer.data[i].time})</span>
+            <span class="user"><strong>${answer.data[i].from}</strong> para <strong>${localUser}:</strong></span>
+            <span class="message">${answer.data[i].text}</span>
+        </div>`
         }
       }
       const lastElement = document.querySelector('main div:first-child');
@@ -72,7 +72,6 @@ function sendMessage() {
     })
     input.value = '';
     promise.then( (answer) => {
-        containerMessage.innerHTML = '';
         showMessages();
     });
     promise.catch((erro) => {
@@ -92,7 +91,6 @@ function updateUsers(){
 }
 function showUsersSideBar(answer){
     const users = document.querySelector('.usersUpdate');
-    console.log(users);
     users.innerHTML = '';
     for (let i = 0 ; i < answer.data.length ; i++) {
         users.innerHTML += 
