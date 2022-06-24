@@ -59,6 +59,7 @@ function showMessages(){
     })
     // setInterval(showMessages , 3000);
     setInterval(verifyStatusOfUser , 5000);
+    setInterval(updateUsers , 10000);
 }
 function sendMessage() {
     const input = document.querySelector('.input-send');
@@ -71,7 +72,6 @@ function sendMessage() {
     })
     input.value = '';
     promise.then( (answer) => {
-        console.log(answer);
         containerMessage.innerHTML = '';
         showMessages();
     });
@@ -93,6 +93,7 @@ function updateUsers(){
 function showUsersSideBar(answer){
     const users = document.querySelector('.usersUpdate');
     console.log(users);
+    users.innerHTML = '';
     for (let i = 0 ; i < answer.data.length ; i++) {
         users.innerHTML += 
     `<div>
