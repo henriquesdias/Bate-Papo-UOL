@@ -12,11 +12,16 @@ function nameOfUser() {
     localUser = input.value;
     input.value = '';
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants ' , {name: localUser});
-    promise.then(showMessages);
+    promise.then( () => {
+        screen.classList.add('hide')
+        setInterval(verifyStatusOfUser , 5000);
+        setInterval(updateUsers , 10000);
+    });
     promise.catch(errorUser);
 }
+setInterval(showMessages , 3000);
 
- 
+
 function errorUser(error){
     const warning = document.querySelector('.warning');
     const button = document.querySelector('.button');
@@ -29,10 +34,9 @@ function errorUser(error){
 }
 
 function showMessages(){
-    screen.classList.add('hide');
-    containerMessage.innerHTML = '';
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
     promise.then((answer) => {
+    containerMessage.innerHTML = '';
     for (let i = answer.data.length - 1 ; i >= 60 ; i--) {
         if (answer.data[i].type === 'status') {
             containerMessage.innerHTML += `<div class="backgroundColorStatus">
@@ -57,9 +61,8 @@ function showMessages(){
       const lastElement = document.querySelector('main div:first-child');
       lastElement.scrollIntoView(false);
     })
-    // setInterval(showMessages , 3000);
-    setInterval(verifyStatusOfUser , 5000);
-    setInterval(updateUsers , 10000);
+    promise.catch( (error) => console.log(error));
+    console.log('mensagens atualizadas');
 }
 function sendMessage() {
     const input = document.querySelector('.input-send');
