@@ -21,7 +21,13 @@ function nameOfUser() {
 }
 setInterval(showMessages , 3000);
 
-
+document.addEventListener('keydown' , (event) => {
+    if (event.key === 'Enter' && screen.classList.contains('hide') === false) {
+        nameOfUser();
+    } else if (event.key === 'Enter') {
+        sendMessage();
+    }
+})
 function errorUser(error){
     const warning = document.querySelector('.warning');
     const button = document.querySelector('.button');
@@ -81,6 +87,7 @@ function sendMessage() {
     console.log(erro); 
     window.location.reload()}); 
 }
+
 function verifyStatusOfUser(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/status' , {name: localUser});
 }
