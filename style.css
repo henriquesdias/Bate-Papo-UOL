@@ -8,6 +8,7 @@ body{
     flex-direction: column;
     background-color: #F3F3F3;
     overflow-y: hidden;
+    height: 100vh;
 }
 *{
     box-sizing: border-box;
@@ -34,6 +35,7 @@ header .icon{
 }
 main {
     margin-top: 90px;
+    margin-bottom: 90px;
     height: calc(100vh - 180px);
     width: 100%;
     overflow-y: scroll;
@@ -59,14 +61,15 @@ nav{
     position: fixed;
     z-index: 2;
     height: 100%;
-    width: 100%;
+    width: calc(100vw - 259px);
     background-color: rgba(0, 0, 0, 0.5);
-    right: 0;
+    left: 0;
     bottom: 0;
 }
 .side-bar{
     position: fixed;
     right: 0;
+    z-index: 2;
     height: 100%;
     width: 259px;
     background-color: white;

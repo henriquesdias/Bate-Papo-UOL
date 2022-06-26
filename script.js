@@ -92,8 +92,10 @@ function verifyStatusOfUser(){
     const promise = axios.post('https://mock-api.driven.com.br/api/v6/uol/status' , {name: localUser});
 }
 function toggleSideBar(){
-    const navBar = document.querySelector('nav');
-    navBar.classList.toggle('hide');
+    const sideBar = document.querySelector('.side-bar');
+    const nav = document.querySelector('nav');
+    sideBar.classList.toggle('hide');
+    nav.classList.toggle('hide');
 }
 function updateUsers(){
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
