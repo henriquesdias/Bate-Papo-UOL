@@ -106,12 +106,25 @@ function showUsersSideBar(answer){
     users.innerHTML = '';
     for (let i = 0 ; i < answer.data.length ; i++) {
         users.innerHTML += 
-    `<div>
+    `<div onclick="selectUser(this)">
         <ion-icon name="person-circle" class="icon"></ion-icon>
         ${answer.data[i].name}
         <ion-icon name="checkmark-sharp" class="check hide"></ion-icon>
     </div>`
     }
+}
+function selectUser(e){
+    const icon = e.querySelector('.check');
+    const users = document.querySelector('.users');
+    const icons = users.querySelectorAll('.check');
+    for (let i = 0 ; i < icons.length ; i++) {
+        icons[i].classList.add('hide');
+    }
+    icon.classList.remove('hide');
+}
+function selectVisiblity(e) {
+    const visibity = e.querySelector('.check')
+    visibity.classList.remove('hide');
 }
 
 

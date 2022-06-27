@@ -26,7 +26,7 @@
     <div class="side-bar hide">
             <h1>Escolha um contato para enviar mensagem</h1>
             <div class="users">
-                <div>
+                <div onclick="selectUser(this)">
                     <ion-icon name="people" class="icon"></ion-icon>
                     Todos
                     <ion-icon name="checkmark-sharp" class="check"></ion-icon>
@@ -37,14 +37,15 @@
             </div>
             <h1>Escolha a vibilidade:</h1>
             <div class="options-send">
-                <div>
+                <div onclick="selectVisiblity(this)">
                     <ion-icon name="lock-open" class="icon"></ion-icon>
                     Público
                     <ion-icon name="checkmark-sharp" class="check"></ion-icon>
                 </div>
-                <div>
+                <div onclick="selectVisiblity(this)">
                     <ion-icon name="lock-closed" class="icon"></ion-icon>
                     Reservadamente
+                    <ion-icon name="checkmark-sharp" class="check hide"></ion-icon>
                 </div>
             </div>
     </div>
