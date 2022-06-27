@@ -68,7 +68,6 @@ function showMessages(){
       lastElement.scrollIntoView(false);
     })
     promise.catch( (error) => console.log(error));
-    console.log('mensagens atualizadas');
 }
 function sendMessage() {
     const input = document.querySelector('.input-send');
@@ -123,7 +122,11 @@ function selectUser(e){
     icon.classList.remove('hide');
 }
 function selectVisiblity(e) {
+    const options = document.querySelector('.options-send').querySelectorAll('.check');
     const visibity = e.querySelector('.check')
+    for (let i = 0 ; i < options.length ; i++) {
+        options[i].classList.add('hide');
+    }
     visibity.classList.remove('hide');
 }
 
